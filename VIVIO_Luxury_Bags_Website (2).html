@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIVIO — Objects of Desire</title>
+<meta name="description" content="VIVIO — contemporary luxury bags designed for the unforgettable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#11110f;--cream:#f4f0e8;--paper:#fbfaf7;--gold:#b99a62;--line:rgba(17,17,15,.14);--muted:#77746e}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}button,input{font:inherit}
+.nav{position:fixed;top:0;left:0;width:100%;z-index:20;padding:24px 4vw;display:flex;align-items:center;justify-content:space-between;color:white;mix-blend-mode:difference}
+.logo{font-size:25px;letter-spacing:.35em;font-weight:600}.navlinks{display:flex;gap:32px;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.navlinks a{opacity:.9;transition:.25s}.navlinks a:hover{opacity:.5}.cart{font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.hero{min-height:100svh;position:relative;background:#171614;overflow:hidden;color:white;display:flex;align-items:flex-end}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.56) saturate(.82)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 35%,rgba(0,0,0,.75))}
+.hero-content{position:relative;z-index:2;width:100%;padding:0 5vw 7vw;display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px}
+.eyebrow,.kicker{font-size:10px;letter-spacing:.32em;text-transform:uppercase}.eyebrow{margin-bottom:20px}
+.hero h1{font-family:"Playfair Display",serif;font-size:clamp(65px,11vw,170px);line-height:.78;font-weight:400;letter-spacing:-.055em}
+.hero-copy{max-width:310px;font-size:13px;line-height:1.7;color:#ddd}.hero-copy a{display:inline-block;margin-top:25px;border-bottom:1px solid white;padding-bottom:7px;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.scroll{position:absolute;right:4vw;top:50%;z-index:3;writing-mode:vertical-rl;font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.7}
+.marquee{overflow:hidden;border-bottom:1px solid var(--line);background:var(--ink);color:var(--cream);white-space:nowrap}
+.marquee-track{display:inline-flex;gap:45px;padding:16px 0;animation:marquee 22s linear infinite;font-family:"Playfair Display",serif;font-size:19px}
+.marquee span{color:#bca06d}@keyframes marquee{to{transform:translateX(-50%)}}
+.section{padding:120px 5vw}.intro{display:grid;grid-template-columns:1.1fr .9fr;gap:8vw;align-items:end}
+.kicker{color:var(--muted);margin-bottom:25px}.intro h2{font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(42px,6vw,90px);line-height:.94;letter-spacing:-.04em}
+.intro p{max-width:430px;font-size:15px;line-height:1.9;color:#5f5c56}.collection{padding-top:25px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.product{position:relative;overflow:hidden;background:#e8e2d7}
+.product:nth-child(1){grid-column:span 7}.product:nth-child(2){grid-column:span 5;margin-top:100px}.product:nth-child(3){grid-column:span 5;margin-top:40px}.product:nth-child(4){grid-column:span 7;margin-top:-30px}
+.product img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1);filter:saturate(.86)}
+.product:nth-child(2) img,.product:nth-child(3) img{aspect-ratio:3/4}.product:hover img{transform:scale(1.045)}
+.product-info{padding:17px 3px 30px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.product-info small{color:var(--muted)}
+.lookbook{background:#181714;color:white;padding:0;position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden}
+.lookbook img{position:absolute;right:7%;top:8%;width:44%;height:84%;object-fit:cover;filter:contrast(.94)}
+.lookbook:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#181714 20%,rgba(24,23,20,.94) 45%,rgba(24,23,20,.1))}
+.lookbook-content{position:relative;z-index:2;padding:12vw 5vw;max-width:720px}.lookbook h2{font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(60px,9vw,130px);line-height:.82;letter-spacing:-.05em}
+.lookbook p{max-width:360px;color:#c8c4bb;line-height:1.8;margin-top:30px;font-size:13px}
+.btn{display:inline-flex;margin-top:32px;padding:14px 21px;border:1px solid currentColor;font-size:10px;letter-spacing:.22em;text-transform:uppercase;transition:.25s}.btn:hover{background:white;color:#111}
+.story{display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;align-items:center}.story img{width:100%;aspect-ratio:1/1.18;object-fit:cover}
+.story h2{font-family:"Playfair Display",serif;font-size:clamp(45px,6vw,80px);font-weight:400;line-height:.92;letter-spacing:-.04em}
+.story p{max-width:420px;margin-top:28px;color:#666;line-height:1.9;font-size:14px}
+.values{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.value{padding:50px 25px;border-right:1px solid var(--line)}.value:last-child{border:0}.value b{font-family:"Playfair Display",serif;font-size:27px;font-weight:400}.value p{margin-top:13px;color:var(--muted);font-size:12px;line-height:1.7}
+.newsletter{background:#ded5c5;text-align:center;padding:110px 20px}.newsletter h2{font-family:"Playfair Display",serif;font-size:clamp(45px,6vw,80px);font-weight:400}.newsletter p{margin:20px auto;max-width:420px;color:#5f5a52;font-size:13px;line-height:1.7}
+.form{max-width:480px;margin:30px auto 0;display:flex;border-bottom:1px solid #333}.form input{flex:1;background:transparent;border:0;outline:0;padding:15px 4px;font-size:12px}.form button{border:0;background:none;padding:15px 4px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+footer{background:var(--ink);color:#eee;padding:70px 5vw 35px}.footer-top{display:flex;justify-content:space-between;gap:30px}.footer-logo{font-size:32px;letter-spacing:.35em}.footer-links{display:flex;gap:30px;font-size:10px;letter-spacing:.15em;text-transform:uppercase}.footer-bottom{margin-top:90px;padding-top:18px;border-top:1px solid #383632;color:#8f8b84;font-size:10px;display:flex;justify-content:space-between}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:760px){.nav{padding:20px}.navlinks{display:none}.hero-content{display:block;padding-bottom:50px}.hero-copy{margin-top:30px}.section{padding:80px 6vw}.intro,.story{grid-template-columns:1fr;gap:45px}.grid{display:block}.product{margin:0 0 45px!important}.product img{aspect-ratio:4/5!important}.lookbook{min-height:90vh}.lookbook img{right:0;top:0;width:100%;height:100%;opacity:.45}.lookbook:after{background:linear-gradient(90deg,#181714 5%,rgba(24,23,20,.65))}.values{grid-template-columns:1fr}.value{border-right:0;border-bottom:1px solid var(--line)}.footer-top{display:block}.footer-links{margin-top:30px;flex-wrap:wrap}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:8px}}
+
+/* VIVIO cinematic luxury effects */
+body{cursor:default}
+.hero{isolation:isolate}
+.grain{position:absolute;inset:-50%;z-index:1;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");animation:grain .25s steps(2) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(2%,-1%)}50%{transform:translate(-1%,2%)}75%{transform:translate(1%,1%)}100%{transform:translate(-2%,-1%)}}
+.hero:before{content:"";position:absolute;z-index:2;inset:0;background:radial-gradient(circle at 72% 35%,rgba(211,184,125,.16),transparent 25%),radial-gradient(circle at 15% 70%,rgba(255,255,255,.08),transparent 22%);pointer-events:none}
+.cursor-glow{position:fixed;z-index:50;width:180px;height:180px;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(210,180,120,.12),transparent 65%);mix-blend-mode:screen}
+.floating-word{position:absolute;z-index:2;right:7vw;top:23%;font-family:"Playfair Display",serif;font-size:12px;letter-spacing:.65em;writing-mode:vertical-rl;opacity:.55;animation:floatword 4s ease-in-out infinite}
+@keyframes floatword{50%{transform:translateY(-12px)}}
+.collection-intro{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:22px 0;margin-bottom:35px;font-size:10px;letter-spacing:.22em;text-transform:uppercase}
+.collection-intro em{font-family:"Playfair Display",serif;font-size:15px;letter-spacing:0;text-transform:none;color:var(--muted)}
+.product{box-shadow:0 18px 50px rgba(0,0,0,.04)}
+.product:after{content:"VIEW";position:absolute;right:20px;top:20px;border:1px solid rgba(255,255,255,.7);color:white;padding:9px 12px;font-size:9px;letter-spacing:.2em;opacity:0;transform:translateY(8px);transition:.4s;pointer-events:none}
+.product:hover:after{opacity:1;transform:none}
+.campaign-video{height:88vh;position:relative;overflow:hidden;background:#111;color:white}
+.campaign-video video{width:100%;height:100%;object-fit:cover;filter:brightness(.55) contrast(1.05);transform:scale(1.02);animation:slowzoom 12s ease-in-out infinite alternate}
+@keyframes slowzoom{to{transform:scale(1.08)}}
+.campaign-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.68),transparent 70%),linear-gradient(0deg,rgba(0,0,0,.5),transparent 45%)}
+.campaign-copy{position:absolute;left:7vw;bottom:9vw;z-index:2}
+.campaign-copy span{font-size:9px;letter-spacing:.3em}
+.campaign-copy h2{font-family:"Playfair Display",serif;font-size:clamp(60px,9vw,140px);font-weight:400;line-height:.85;margin:18px 0 30px;letter-spacing:-.055em}
+.campaign-copy a{font-size:10px;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid white;padding-bottom:8px}
+@media(max-width:760px){.collection-intro{display:block}.collection-intro em{display:block;margin-top:9px}.campaign-video{height:75vh}.campaign-copy{left:7vw;bottom:14vw}.cursor-glow{display:none}}
+
+</style>
+</head>
+<body>
+<nav class="nav">
+<a class="logo" href="#">VIVIO</a>
+<div class="navlinks"><a href="#collection">Collection</a><a href="#world">The World</a><a href="#story">Our Story</a></div>
+<div class="cart">Bag · 0</div>
+</nav>
+
+<header class="hero">
+<video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=2200&q=90">
+<source src="https://cdn.coverr.co/videos/coverr-woman-with-a-bag-1573/1080p.mp4" type="video/mp4">
+</video>
+<div class="grain"></div><div class="cursor-glow"></div>
+<div class="floating-word">VIVIO</div>
+<div class="scroll">Scroll to discover ↓</div>
+<div class="hero-content">
+<div><div class="eyebrow">VIVIO / 2026 COLLECTION</div><h1>Carry<br><i>the</i><br>moment.</h1></div>
+<div class="hero-copy">A new language of modern luxury. Sculptural silhouettes, considered materials and quiet confidence.<br><a href="#collection">Explore the collection</a></div>
+</div>
+</header>
+
+<div class="marquee"><div class="marquee-track">VIVIO <span>✦</span> OBJECTS OF DESIRE <span>✦</span> MADE TO BE SEEN <span>✦</span> VIVIO <span>✦</span> OBJECTS OF DESIRE <span>✦</span> MADE TO BE SEEN <span>✦</span></div></div>
+
+<section class="section intro reveal" id="world">
+<div><div class="kicker">01 / A new house</div><h2>Luxury,<br>without the noise.</h2></div>
+<p>VIVIO is an independent accessories house built around one idea: the most memorable pieces don't ask for attention. They command it. Every silhouette is designed to live beyond a season.</p>
+</section>
+
+<section class="section collection" id="collection">
+<div class="collection-intro reveal"><span>THE NEW ICONS</span><em>Four silhouettes. One signature.</em></div>
+<div class="kicker reveal">02 / The collection</div>
+<div class="grid">
+<article class="product reveal"><img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1300&q=90" alt="VIVIO handbag"><div class="product-info"><span>01 / Solis Top Handle</span><small>PKR 28,900</small></div></article>
+<article class="product reveal"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1100&q=90" alt="VIVIO leather handbag"><div class="product-info"><span>02 / No. 07 Shoulder</span><small>PKR 24,500</small></div></article>
+<article class="product reveal"><img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=1100&q=90" alt="VIVIO statement bag"><div class="product-info"><span>03 / Aria Mini</span><small>PKR 19,800</small></div></article>
+<article class="product reveal"><img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1300&q=90" alt="VIVIO premium bag"><div class="product-info"><span>04 / Atelier 01</span><small>PKR 31,200</small></div></article>
+</div>
+</section>
+
+<section class="lookbook">
+<img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1300&q=90" alt="VIVIO campaign">
+<div class="lookbook-content reveal"><div class="kicker">03 / Campaign 01</div><h2>The art<br>of arriving.</h2><p>There is a particular moment before you enter the room. The glance in the mirror. The final adjustment. The quiet certainty. VIVIO was made for that moment.</p><a class="btn" href="#collection">Shop the edit</a></div>
+</section>
+
+<section class="section story reveal" id="story">
+<img src="https://images.unsplash.com/photo-1612902456551-333ac5afa26e?auto=format&fit=crop&w=1200&q=90" alt="Luxury leather detail">
+<div><div class="kicker">04 / The VIVIO standard</div><h2>Designed slowly.<br>Worn endlessly.</h2><p>We obsess over proportion, touch and movement. Our pieces are intentionally restrained, allowing the material, shape and person carrying them to become the statement.</p><a class="btn" href="#newsletter">Enter the world</a></div>
+</section>
+
+<section class="section" style="padding-top:20px"><div class="values reveal">
+<div class="value"><b>Considered form</b><p>Architectural silhouettes made to hold their shape, while still feeling effortless in your hand.</p></div>
+<div class="value"><b>Quiet signature</b><p>No oversized logos. Just a distinctive visual language that becomes recognizable over time.</p></div>
+<div class="value"><b>Made for now</b><p>A contemporary house for people who want luxury to feel personal, not predictable.</p></div>
+</div></section>
+
+<section class="campaign-video">
+  <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1800&q=90">
+    <source src="https://cdn.coverr.co/videos/coverr-fashion-woman-with-a-handbag-1576/1080p.mp4" type="video/mp4">
+  </video>
+  <div class="campaign-overlay"></div>
+  <div class="campaign-copy"><span>VIVIO FILM / 01</span><h2>Own the room.</h2><a href="#collection">Discover VIVIO</a></div>
+</section>
+
+<section class="newsletter" id="newsletter">
+<div class="kicker">The VIVIO private list</div><h2>Be first to know.</h2><p>New drops, private previews and stories from the house. No noise. Only what matters.</p>
+<form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='WELCOME';"><input type="email" placeholder="Your email address" required><button type="submit">Join</button></form>
+</section>
+
+<footer><div class="footer-top"><div class="footer-logo">VIVIO</div><div class="footer-links"><a href="#">Instagram</a><a href="#">Contact</a><a href="#">Shipping</a><a href="#">Care</a></div></div><div class="footer-bottom"><span>© 2026 VIVIO HOUSE</span><span>Designed for the unforgettable.</span></div></footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const glow=document.querySelector('.cursor-glow');
+if(glow) window.addEventListener('pointermove',e=>{
+ glow.animate({left:e.clientX+'px',top:e.clientY+'px'},{duration:500,fill:'forwards'});
+});
+
+</script>
+</body>
+</html>
